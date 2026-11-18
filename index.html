@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShieldGuard Insurance | Secure Your Future</title>
+  <!-- Font Awesome 6 (free) for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    body {
+      background: #f9fbfd;
+      color: #1e2a3a;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- Header / Navbar ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b2b4f;
+      letter-spacing: -0.02em;
+    }
+
+    .logo i {
+      color: #1e6f9f;
+      font-size: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #1e6f9f;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #1e6f9f;
+      background: transparent;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #1e6f9f;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline:hover {
+      background: #1e6f9f;
+      color: white;
+    }
+
+    .btn-primary {
+      background: #1e6f9f;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      font-size: 1rem;
+      box-shadow: 0 6px 14px rgba(30, 111, 159, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #155a82;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+
+    /* ----- Hero section ----- */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+      padding: 50px 0 70px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #0b2b4f;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #1e6f9f;
+      border-bottom: 4px solid #aad4f5;
+      display: inline-block;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #3e4e5e;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-image {
+      background: linear-gradient(145deg, #e3f0fa, #d0e6f5);
+      border-radius: 40px 40px 40px 0;
+      padding: 30px;
+      box-shadow: 0 25px 40px -12px rgba(0, 40, 80, 0.25);
+      position: relative;
+    }
+
+    .hero-image i {
+      font-size: 10rem;
+      color: #1e6f9f;
+      opacity: 0.9;
+      display: block;
+      text-align: center;
+    }
+
+    .hero-image .badge {
+      background: white;
+      padding: 14px 22px;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      font-weight: 600;
+      color: #0b2b4f;
+      position: absolute;
+      bottom: 18px;
+      left: 30px;
+      font-size: 0.95rem;
+    }
+
+    .badge i {
+      font-size: 1.4rem;
+      color: #1e6f9f;
+      opacity: 1;
+    }
+
+    /* ----- Trust indicators ----- */
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 28px;
+      padding: 24px 0 50px;
+      border-bottom: 1px solid #dae5ed;
+      color: #3e5e7a;
+      font-weight: 500;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1rem;
+    }
+
+    .trust-item i {
+      font-size: 1.8rem;
+      color: #1e6f9f;
+    }
+
+    /* ----- Cards / Coverage ----- */
+    .section-title {
+      text-align: center;
+      margin: 70px 0 20px;
+    }
+
+    .section-title h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #0b2b4f;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title p {
+      color: #4e6279;
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 12px auto 0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      margin: 48px 0 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 32px 26px;
+      box-shadow: 0 10px 25px rgba(0, 20, 40, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid #eaf0f6;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 36px -12px rgba(30, 111, 159, 0.18);
+      border-color: #cde0ee;
+    }
+
+    .card-icon {
+      background: #e7f1fa;
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .card-icon i {
+      font-size: 2rem;
+      color: #1e6f9f;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0b2b4f;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #4a5e72;
+      margin-bottom: 20px;
+      font-size: 0.98rem;
+    }
+
+    .card a {
+      color: #1e6f9f;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .card a:hover {
+      gap: 10px;
+    }
+
+    /* ----- CTA banner ----- */
+    .cta-banner {
+      background: linear-gradient(105deg, #0b2b4f 0%, #1b4e74 100%);
+      border-radius: 40px;
+      padding: 60px 50px;
+      margin: 80px 0 60px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      color: white;
+    }
+
+    .cta-banner h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      max-width: 550px;
+      line-height: 1.3;
+    }
+
+    .cta-banner .btn-primary {
+      background: white;
+      color: #0b2b4f;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    .cta-banner .btn-primary:hover {
+      background: #ecf3fa;
+    }
+
+    /* ----- Footer ----- */
+    .footer {
+      border-top: 1px solid #dae5ed;
+      padding: 48px 0 32px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-col h4 {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      color: #0b2b4f;
+      font-weight: 700;
+    }
+
+    .footer-col a, .footer-col p {
+      display: block;
+      text-decoration: none;
+      color: #4e6279;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: #1e6f9f;
+    }
+
+    .copyright {
+      text-align: center;
+      color: #7b8da0;
+      font-size: 0.9rem;
+      padding: 24px 0 16px;
+      border-top: 1px solid #e2eaf1;
+      margin-top: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .cta-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .btn-outline, .btn-primary {
+        padding: 10px 18px;
+      }
+      .section-title h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="navbar">
+        <div class="logo">
+          <i class="fas fa-shield-alt"></i>
+          <span>ShieldGuard</span>
+        </div>
+        <div class="nav-links">
+          <a href="#">Products</a>
+          <a href="#">Claims</a>
+          <a href="#">Resources</a>
+          <a href="#">About</a>
+          <button class="btn-outline">Sign in</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Protection that <span>adapts</span> to your life.</h1>
+        <p>Personal, home, and auto coverage with transparent pricing and 24/7 support. Get a quote in minutes — no paperwork, no pressure.</p>
+        <div class="hero-actions">
+          <button class="btn-primary">Get a free quote <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+          <button class="btn-outline">Speak to an agent</button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <i class="fas fa-umbrella"></i>
+        <div class="badge">
+          <i class="fas fa-check-circle"></i> 4.9 ★ from 12k+ reviews
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust badges -->
+    <div class="trust-row">
+      <div class="trust-item"><i class="fas fa-lock"></i> 256‑bit encryption</div>
+      <div class="trust-item"><i class="fas fa-clock"></i> 24/7 claims</div>
+      <div class="trust-item"><i class="fas fa-rotate-left"></i> 30‑day money back</div>
+      <div class="trust-item"><i class="fas fa-star"></i> A+ rated insurer</div>
+    </div>
+
+    <!-- Coverage cards -->
+    <div class="section-title">
+      <h2>Coverage for every chapter</h2>
+      <p>Tailored protection for your car, home, and loved ones — all in one place.</p>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-car"></i></div>
+        <h3>Auto insurance</h3>
+        <p>Full coverage, liability, and roadside assistance with accident forgiveness.</p>
+        <a href="#">Explore auto <i class="fas fa-chevron-right"></i></a>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-home"></i></div>
+        <h3>Home insurance</h3>
+        <p>Protect your home and belongings from fire, theft, and natural disasters.</p>
+        <a href="#">Explore home <i class="fas fa-chevron-right"></i></a>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Life & health</h3>
+        <p>Flexible life and critical illness cover to keep your family secure.</p>
+        <a href="#">Explore life <i class="fas fa-chevron-right"></i></a>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Business insurance</h3>
+        <p>Liability, property, and workers' comp tailored for small businesses.</p>
+        <a href="#">Explore business <i class="fas fa-chevron-right"></i></a>
+      </div>
+    </div>
+
+    <!-- CTA banner -->
+    <div class="cta-banner">
+      <h2>Ready to switch? Save up to 25% when you bundle.</h2>
+      <button class="btn-primary">Get my quote <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-col">
+        <h4>ShieldGuard</h4>
+        <a href="#">About us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+        <a href="#">Partners</a>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#">Auto</a>
+        <a href="#">Home</a>
+        <a href="#">Life</a>
+        <a href="#">Business</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help center</a>
+        <a href="#">Claims</a>
+        <a href="#">Contact</a>
+        <a href="#">FAQs</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Licenses</a>
+        <a href="#">Accessibility</a>
+      </div>
+    </footer>
+    <div class="copyright">
+      © 2025 ShieldGuard Insurance. All rights reserved. This is a demo webpage.
+    </div>
+  </div>
+</body>
+</html>

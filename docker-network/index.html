@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYMA · Cute Dog Petstore</title>
+    <!-- Font Awesome for cute icons (optional, but adds charm) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff9f0 0%, #ffe9d6 100%);
+            font-family: 'Segoe UI', 'Quicksand', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        /* main card – petstore container */
+        .petstore {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 60px 60px 40px 40px;
+            box-shadow: 0 25px 40px -15px rgba(0, 0, 0, 0.2),
+                        0 0 0 2px #ffffff inset,
+                        0 0 0 5px #fce2c1 inset;
+            padding: 2.5rem 2rem 3rem;
+            transition: all 0.2s;
+        }
+
+        /* header with HYMA */
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 6px;
+            color: #5e3a1c;
+            text-shadow: 6px 6px 0 #ffcf9c, 10px 10px 20px rgba(255, 170, 80, 0.3);
+            font-family: 'Quicksand', 'Segoe UI', sans-serif;
+            display: inline-block;
+            transform: rotate(-1deg);
+            background: #fff6e9;
+            padding: 0.2rem 2rem;
+            border-radius: 100px;
+            box-shadow: 0 10px 0 #d9a066, 0 15px 25px rgba(160, 100, 30, 0.2);
+            border: 3px solid #ffffff;
+        }
+
+        .header h1 i {
+            font-size: 3.5rem;
+            color: #ff8a5c;
+            margin: 0 0.2rem;
+            text-shadow: none;
+            transform: scale(1.1);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #8b5e3c;
+            margin-top: 1rem;
+            font-weight: 600;
+            background: #ffffffc0;
+            display: inline-block;
+            padding: 0.4rem 2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            border: 2px dashed #ffb882;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .tagline i {
+            color: #e63946;
+            margin: 0 6px;
+        }
+
+        /* dog gallery grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem 1.5rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        /* dog card */
+        .dog-card {
+            background: #fffffffa;
+            border-radius: 50px 50px 35px 35px;
+            padding: 1.8rem 1rem 1.5rem;
+            box-shadow: 0 20px 25px -8px rgba(100, 60, 20, 0.25),
+                        0 0 0 2px #ffe7d4,
+                        0 0 0 6px #ffffff;
+            text-align: center;
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ffdec2;
+        }
+
+        .dog-card:hover {
+            transform: translateY(-12px) rotate(0.5deg);
+            box-shadow: 0 30px 30px -12px #b57a4b, 0 0 0 2px #ffb882, 0 0 0 6px #fff7e6;
+        }
+
+        /* circular image frame */
+        .dog-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid #fff4e6;
+            box-shadow: 0 12px 0 #d9a066, 0 18px 25px rgba(140, 80, 20, 0.3);
+            transition: all 0.3s;
+            background: #ffe4d0;
+        }
+
+        .dog-card:hover .dog-img {
+            border-color: #ffdbb5;
+            box-shadow: 0 12px 0 #b47d4b, 0 22px 30px #9b6b3f;
+        }
+
+        /* dog name (with HYMA mini badge) */
+        .dog-name {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #523a22;
+            margin: 0.8rem 0 0.3rem;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .dog-name i {
+            color: #ff8a5c;
+            font-size: 1.8rem;
+        }
+
+        .hyma-badge {
+            background: #ffb882;
+            color: #4d2e14;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            box-shadow: inset 0 -3px 0 #a86432, 0 4px 8px #f0b68b;
+            letter-spacing: 1px;
+            border: 2px solid #ffffff;
+        }
+
+        /* cute description */
+        .dog-desc {
+            font-size: 1rem;
+            color: #7a5a3e;
+            background: #fff6ef;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            margin: 0.7rem 0 0.5rem;
+            font-weight: 500;
+            display: inline-block;
+            border: 1px solid #ffd7b5;
+            line-height: 1.4;
+        }
+
+        /* small paw icon row */
+        .paw-row {
+            margin-top: 0.6rem;
+            color: #b2805a;
+            font-size: 1.3rem;
+            letter-spacing: 8px;
+        }
+
+        /* footer with HYMA mention */
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            color: #6b4a2c;
+            font-size: 1.1rem;
+            border-top: 2px dashed #eac8a8;
+            padding-top: 1.8rem;
+            font-weight: 500;
+        }
+
+        .footer i {
+            color: #e63946;
+            margin: 0 6px;
+        }
+
+        .footer strong {
+            font-size: 1.4rem;
+            background: #ffe1c6;
+            padding: 0.2rem 1.2rem;
+            border-radius: 40px;
+            letter-spacing: 2px;
+            color: #3b2a1b;
+            border: 2px solid white;
+        }
+
+        /* responsive fine-tuning */
+        @media (max-width: 600px) {
+            .petstore {
+                padding: 1.8rem 1rem 2rem;
+                border-radius: 40px;
+            }
+            .header h1 {
+                font-size: 3rem;
+                letter-spacing: 4px;
+                padding: 0.2rem 1rem;
+            }
+            .header h1 i {
+                font-size: 2.2rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+                padding: 0.3rem 1rem;
+            }
+            .dog-img {
+                width: 150px;
+                height: 150px;
+            }
+            .dog-name {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .header h1 {
+                font-size: 2.3rem;
+            }
+            .dog-img {
+                width: 130px;
+                height: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petstore">
+        <!-- header with the name HYMA big and clear -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-paw"></i>
+                HYMA
+                <i class="fas fa-paw"></i>
+            </h1>
+            <div class="tagline">
+                <i class="fas fa-heart"></i>  fluffy friends & wet noses  <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <!-- dog gallery – 6 cute dogs, each with HYMA twist -->
+        <div class="gallery">
+            <!-- Dog 1: Golden Retriever style -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&h=400&fit=crop&auto=format" 
+                     alt="Cute golden retriever puppy with tongue out">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">sunshine</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-bone"></i> golden retriever <i class="fas fa-bone"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+
+            <!-- Dog 2: Corgi -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1612536057832-2ff7ead58194?w=400&h=400&fit=crop&auto=format" 
+                     alt="Cute corgi dog with happy face">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">corgi</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-star"></i> fluffy butt <i class="fas fa-star"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+
+            <!-- Dog 3: Samoyed / white fluffy -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1529421308418-eab98863cee4?w=400&h=400&fit=crop&auto=format" 
+                     alt="Smiling Samoyed dog">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">cloud</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-snowflake"></i> samoyed smile <i class="fas fa-snowflake"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+
+            <!-- Dog 4: French bulldog -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1583512603805-3cc6b41f3edb?w=400&h=400&fit=crop&auto=format" 
+                     alt="Cute French bulldog puppy">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">frenchie</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-heart"></i> tiny bat ears <i class="fas fa-heart"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+
+            <!-- Dog 5: Beagle -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1537151625747-768eb6cf92b2?w=400&h=400&fit=crop&auto=format" 
+                     alt="Beagle dog with soft eyes">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">beagle</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-search"></i> sniffing expert <i class="fas fa-search"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+
+            <!-- Dog 6: Mixed breed / adorable terrier -->
+            <div class="dog-card">
+                <img class="dog-img" 
+                     src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&h=400&fit=crop&auto=format" 
+                     alt="Cute scruffy terrier dog">
+                <div class="dog-name">
+                    <i class="fas fa-dog"></i> HYMA <span class="hyma-badge">scruffy</span>
+                </div>
+                <div class="dog-desc">
+                    <i class="fas fa-crown"></i> cuddle champion <i class="fas fa-crown"></i>
+                </div>
+                <div class="paw-row">
+                    <i class="fas fa-paw"></i><i class="fas fa-paw"></i><i class="fas fa-paw"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer note with HYMA name again -->
+        <div class="footer">
+            <i class="fas fa-dog"></i> 
+            <strong>HYMA</strong> petstore — where every pup is a little star 
+            <i class="fas fa-dog"></i>
+            <br>
+            <span style="font-size: 0.9rem; opacity: 0.8;">
+                <i class="fas fa-map-pin"></i> 123 fluffy lane · open 9am–9pm 
+                <i class="fas fa-phone-alt"></i> (555) DOG-HYMA
+            </span>
+        </div>
+    </div>
+</body>
+</html>

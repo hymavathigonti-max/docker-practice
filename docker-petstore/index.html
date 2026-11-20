@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyma's Pawfect Stroll · Dog Walking</title>
+  <!-- Font Awesome 6 for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fbfaf6;
+      color: #2d3e50;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    header {
+      background: #ffffffdd;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: #2d3e50;
+      letter-spacing: -0.5px;
+    }
+
+    .logo i {
+      color: #e6b12e;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 4px 4px rgba(230, 177, 46, 0.2));
+    }
+
+    .logo span {
+      color: #7f9c7a;
+    }
+
+    /* "by Hyma" tag under logo */
+    .logo-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #7f9c7a;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: -4px;
+      margin-left: 4px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #2d3e50;
+      font-weight: 600;
+      margin-left: 2rem;
+      transition: color 0.2s, border-bottom 0.2s;
+      padding-bottom: 0.3rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      color: #7f9c7a;
+      border-bottom-color: #7f9c7a;
+    }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      margin: 3rem 0 4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #1e2a36;
+    }
+
+    .hero-text h1 i {
+      color: #e6b12e;
+      font-size: 0.9em;
+      margin-right: 0.2rem;
+    }
+
+    .hero-text p {
+      font-size: 1.3rem;
+      color: #4e5f6b;
+      margin-bottom: 2rem;
+      font-weight: 500;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #7f9c7a;
+      color: white;
+      font-weight: 700;
+      padding: 0.9rem 2.4rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 20px rgba(127, 156, 122, 0.3);
+      transition: background 0.25s, transform 0.1s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+
+    .btn:hover {
+      background: #6a8665;
+      box-shadow: 0 12px 28px rgba(127, 156, 122, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 4px 12px rgba(127, 156, 122, 0.4);
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 480px;
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      box-shadow: 0 30px 40px -20px rgba(45, 62, 80, 0.4);
+      border: 8px solid white;
+      transition: transform 0.3s;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.01) rotate(0.5deg);
+    }
+
+    /* Gallery */
+    .gallery-title {
+      text-align: center;
+      font-size: 2.3rem;
+      font-weight: 700;
+      margin: 4rem 0 0.8rem;
+      color: #1e2a36;
+      letter-spacing: -0.5px;
+    }
+
+    .gallery-sub {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #6c7e8a;
+      margin-bottom: 3rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .gallery-sub i {
+      color: #e6b12e;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #f0ede7;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 40px -15px rgba(45, 62, 80, 0.25);
+    }
+
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .card:hover img {
+      transform: scale(1.02);
+    }
+
+    .card-caption {
+      padding: 1.2rem 1.4rem 1.6rem;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-caption span {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #2d3e50;
+    }
+
+    .card-caption i {
+      color: #e6b12e;
+      font-size: 1.5rem;
+      opacity: 0.8;
+    }
+
+    /* Hyma signature strip */
+    .signature-strip {
+      background: linear-gradient(135deg, #eef3ec 0%, #f9f6ef 100%);
+      border-radius: 60px;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      border: 1px solid #e2e9df;
+      box-shadow: 0 8px 20px -8px rgba(127, 156, 122, 0.15);
+    }
+
+    .signature-strip .hyma-avatar {
+      width: 70px;
+      height: 70px;
+      background: #7f9c7a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 2rem;
+      box-shadow: 0 8px 16px rgba(127, 156, 122, 0.3);
+      flex-shrink: 0;
+    }
+
+    .signature-strip .hyma-quote {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #2d3e50;
+      max-width: 600px;
+    }
+
+    .signature-strip .hyma-quote i {
+      color: #e6b12e;
+      margin-right: 6px;
+    }
+
+    .signature-strip .hyma-name {
+      font-weight: 700;
+      color: #7f9c7a;
+      font-size: 1.3rem;
+      white-space: nowrap;
+    }
+
+    /* Footer */
+    footer {
+      background: #1e2a36;
+      color: #cbd5db;
+      text-align: center;
+      padding: 2rem 1rem;
+      border-radius: 50px 50px 0 0;
+      margin-top: 3rem;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    footer i {
+      color: #e6b12e;
+      margin: 0 4px;
+    }
+
+    footer .footer-hyma {
+      color: #e6b12e;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .header-inner {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      nav a {
+        margin: 0 1rem;
+      }
+
+      .hero {
+        margin: 2rem 0 3rem;
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+      }
+
+      .gallery-title {
+        font-size: 2rem;
+      }
+
+      .card img {
+        height: 230px;
+      }
+
+      .container {
+        padding: 0 1.2rem;
+      }
+
+      .signature-strip {
+        padding: 1.5rem 1.5rem;
+        gap: 1rem;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      .signature-strip .hyma-quote {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image img {
+        max-width: 100%;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 0.8rem 1.8rem;
+      }
+    }
+
+    .bg-paw {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 3rem;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: -1;
+      transform: rotate(15deg);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-paw" aria-hidden="true">
+    <i class="fas fa-paw"></i>
+  </div>
+
+  <!-- Header with Hyma branding -->
+  <header>
+    <div class="container header-inner">
+      <div class="logo">
+        <i class="fas fa-dog"></i>
+        <div>
+          <div>Hyma's <span>Pawfect Stroll</span></div>
+          <div class="logo-tag"><i class="fas fa-heart" style="font-size:0.65rem; color:#e6b12e;"></i> by Hyma · dog walking</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Walks</a>
+        <a href="#">Gallery</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero with Hyma mention -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1><i class="fas fa-paw"></i> Happy tails, <br>every walk with Hyma.</h1>
+        <p>Professional, loving walks for your best friend.<br>Rain or shine — Hyma keeps tails wagging.</p>
+        <a href="#" class="btn"><i class="fas fa-calendar-check"></i> Book a walk with Hyma</a>
+      </div>
+      <div class="hero-image">
+        <img 
+          src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop" 
+          alt="Happy golden retriever smiling outdoors"
+          loading="eager"
+        >
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <h2 class="gallery-title">Hyma's happy paws in action</h2>
+    <div class="gallery-sub">
+      <i class="fas fa-camera-retro"></i> 
+      <span>Real walks by Hyma — favourite moments</span>
+      <i class="fas fa-heart" style="color: #e6b12e;"></i>
+    </div>
+
+    <div class="image-grid">
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1771807/pexels-photo-1771807.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Dog on a leash walking through green park" loading="lazy">
+        <div class="card-caption">
+          <span>Hyma's morning stroll</span>
+          <i class="fas fa-tree"></i>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1452717/pexels-photo-1452717.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Border collie running happily on grass" loading="lazy">
+        <div class="card-caption">
+          <span>Zoomies with Hyma</span>
+          <i class="fas fa-bolt"></i>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/5731866/pexels-photo-5731866.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Happy dog with walker in urban setting" loading="lazy">
+        <div class="card-caption">
+          <span>City walk · Hyma</span>
+          <i class="fas fa-city"></i>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Golden retriever sitting in sunshine" loading="lazy">
+        <div class="card-caption">
+          <span>Golden hour with Hyma</span>
+          <i class="fas fa-sun"></i>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/574520/pexels-photo-574520.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Cute pug on a walk in the neighborhood" loading="lazy">
+        <div class="card-caption">
+          <span>Hyma's little explorer</span>
+          <i class="fas fa-map-pin"></i>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.pexels.com/photos/161117/dog-golden-retriever-doggy-161117.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="Two dogs on a walk in nature" loading="lazy">
+        <div class="card-caption">
+          <span>Pack walk with Hyma</span>
+          <i class="fas fa-dog"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hyma signature strip -->
+    <div class="signature-strip">
+      <div class="hyma-avatar">H</div>
+      <div class="hyma-quote">
+        <i class="fas fa-quote-left"></i> 
+        Every dog deserves a happy, safe walk — and I'm Hyma, here to make that happen.
+      </div>
+      <div class="hyma-name">— Hyma</div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <i class="fas fa-paw"></i> 
+      Hyma's Pawfect Stroll · safe & loving walks since 2025 
+      <i class="fas fa-paw"></i>
+      <br>
+      <span style="font-size: 0.95rem;">
+        Owned & operated by <span class="footer-hyma">Hyma</span> · 
+        <i class="fas fa-phone-alt" style="font-size:0.9rem;"></i> book your walk today
+      </span>
+      <br>
+      <span style="font-size: 0.8rem; opacity: 0.7;">📸 Beautiful moments captured with happy pups by Hyma</span>
+    </div>
+  </footer>
+
+  <div style="text-align: center; font-size: 0.7rem; padding: 0.8rem; color: #a0b2be;">
+    Photos via <a href="https://www.pexels.com" style="color: #7f9c7a; text-decoration: none;">Pexels</a> — free for happy walks
+  </div>
+</body>
+</html>
